@@ -10,9 +10,9 @@ class Api::BraintreeController < ApplicationController
     elsif result.transaction
       text = result.transaction.processor_response_text
       code = result.transaction.processor_response_code
-      text === "Do Not Honor" && (render json: { errors: [{ message: "Invalid Card. Please Try Again" }, { text: text, code: code }] })
+      render json: { errors: { message: "Invalid Card. Please Try Again", error_text: text, code: code } }
     else
-      render json: { errors: result.errors }
+      render json: { errors:  { message: result.errors.each { |e| e.message }[0].message } }
     end
   end
 end

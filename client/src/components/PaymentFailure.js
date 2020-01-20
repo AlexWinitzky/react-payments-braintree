@@ -7,7 +7,8 @@ const PaymentFailure = ({ location: { state, }, }) => {
     return (
       <Segment basic textAlign='center'>
         <Header as='h1' color='red'>We're Sorry, your purchase had an error.</Header>
-        <p>{state.info.errors[0].message}</p>
+        <p>{state.info.errors.error_text}</p>
+        <p>{state.info.errors.message}</p>
         <Link to='/'>Start Over</Link>
       </Segment>
     )
