@@ -5,10 +5,6 @@ import BriantreeDrop from './BraintreeDrop';
 const Home = () => {
   const [amount, setAmount] = useState('')
 
-  const handleChange = (e) => {
-    setAmount(e.target.value)
-  }
-
   return (
     <Segment basic textAlign='center'>
       <Header as='h1' textAlign='center'>React Payments</Header>
@@ -17,7 +13,7 @@ const Home = () => {
       <Input
         value={amount}
         name={amount}
-        onChange={handleChange}
+        onChange={e => setAmount(e.target.value)}
         style={{ fontSize: '18px', }} />
       <Divider />
       <BriantreeDrop amount={amount} />
